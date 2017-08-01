@@ -21,11 +21,19 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
+for xi = 1:size(X,1)
+	x = X(xi, :);
 
-
-
-
-
+	best = inf;
+	for mui = 1:K
+		mu = centroids(mui, : );
+		d = dot(x - mu, x - mu);
+		if d < best 
+			best = d
+			idx(xi) = mui
+		end
+	end
+end
 
 % =============================================================
 
